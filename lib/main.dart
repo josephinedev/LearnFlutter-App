@@ -78,13 +78,15 @@ class MyAppState extends State<MyApp> {
             child: ListView(
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+                  padding: EdgeInsets.symmetric(vertical: 40, horizontal: 30),
                   child: Image.network(
                       "https://pbs.twimg.com/profile_images/1022172295471792130/QvXrfPjH_400x400.jpg"),
                 ),
-
-                Text("")
-
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 30),
+                  child: Text(
+                      "Software Developer building mobile apps with Flutter. #Apps #Flutter #AndroidDev"),
+                )
               ],
             ),
           ),
