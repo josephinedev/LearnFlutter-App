@@ -68,68 +68,53 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.orange,
       ),
       home: Scaffold(
         appBar: AppBar(),
-        body: Center(
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-            child: ListView(
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 40, horizontal: 30),
-                  child: Image.network(
-                      "https://pbs.twimg.com/profile_images/1022172295471792130/QvXrfPjH_400x400.jpg"),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 30),
-                  child: Text(
-                      "Software Developer building mobile apps with Flutter. #Apps #Flutter #AndroidDev"),
-                )
-              ],
+        body: ListView(
+          children: [
+            buildRow("Manchester United", 22),
+            buildRow("Juventus", 18),
+            buildRow("Real Madrid", 19),
+            buildRow("PSG", 17),
+            buildRow("Kabasha", 14),
+            buildRow("Mazembe", 22),
+            buildRow("Virunga", 13),
+            buildRow("DCMP", 16),
+            buildRow("Volcano", 13),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container buildRow(String team, int points) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.orange, width: 2),
+          borderRadius: BorderRadius.all(Radius.circular(4))),
+      margin: EdgeInsets.all(20),
+      padding: EdgeInsets.all(5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            "$team",
+            style: TextStyle(fontSize: 21),
+          ),
+          Container(
+            padding: EdgeInsets.all(3),
+            decoration: BoxDecoration(
+                color: Colors.orange,
+                borderRadius: BorderRadius.all(Radius.circular(4))),
+            child: Text(
+              "$points",
+              style: TextStyle(fontSize: 21, color: Colors.white),
             ),
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {
-            setState(() {
-              isToggled = !isToggled;
-            });
-          },
-        ),
+        ],
       ),
-    );
-  }
-
-  Container buildTextField() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 40),
-      child: TextField(
-        decoration: InputDecoration(border: OutlineInputBorder()),
-        keyboardType: TextInputType.number,
-      ),
-    );
-  }
-
-  Row buildRow() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        FlutterLogo(
-          size: 100,
-        ),
-        Text(isToggled ? 'ON' : 'OFF'),
-        RaisedButton(
-          child: Text('Toggle'),
-          onPressed: () {
-            setState(() {
-              isToggled = !isToggled;
-            });
-          },
-        ),
-      ],
     );
   }
 }
