@@ -84,6 +84,7 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -94,43 +95,95 @@ class MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         appBar: AppBar(),
-        body: ListView(
-          children: [
-            buildRow("Machester United", 20, Colors.green, Colors.red),
-            buildRow("Juventus", 18, Colors.orange, Colors.purple),
-            buildRow("Real Madrid", 19, Colors.blue, Colors.pink),
-          ],
+        body: Container(
+          margin: EdgeInsets.all(20),
+          child: ListView(
+
+            children: [
+              buildTextField(),
+              buildTextField1(),
+              buildTextField2(),
+              buildTextField3(),
+
+              Container(
+               padding: EdgeInsets.symmetric(vertical: 0, horizontal: 40),
+                child: RaisedButton(
+                  child: Text('Submit'),
+                  color: Colors.orange,
+                  onPressed: (){
+                  }
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Container buildRow(String team, int point, Color countorColor, Color numberColor) {
+
+ }
+  Container buildTextField() {
     return Container(
-      decoration: BoxDecoration(
-          border: Border.all(color: countorColor, width: 2),
-          borderRadius: BorderRadius.all(Radius.circular(4))),
-      margin: EdgeInsets.all(20),
-      padding: EdgeInsets.all(5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "$team",
-            style: TextStyle(fontSize: 21),
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+      child: TextField(
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          hintText: "First Name",
+          border: OutlineInputBorder(
+            borderSide: BorderSide(),
+
           ),
-          Container(
-            padding: EdgeInsets.all(3),
-            decoration: BoxDecoration(
-                color: numberColor,
-                borderRadius: BorderRadius.all(Radius.circular(4))),
-            child: Text(
-              "$point",
-              style: TextStyle(fontSize: 21, color: Colors.white),
-            ),
-          ),
-        ],
+        ),
+      ),
+    );
+
+  }
+
+
+
+  Container buildTextField1(){
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
+      child: TextField(
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          hintText: "Last Name",
+          border: OutlineInputBorder(
+            borderSide: BorderSide(),
+          )
+        ),
+      ),
+    );
+
+  }
+
+  Container buildTextField2() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
+      child: TextField(
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+            hintText: "weight",
+            border: OutlineInputBorder(
+              borderSide: BorderSide(),
+            )
+        ),
       ),
     );
   }
-}
+  Container buildTextField3() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
+      child: TextField(
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+            hintText: "Phone Number",
+            border: OutlineInputBorder(
+              borderSide: BorderSide(),
+            )
+        ),
+      ),
+    );
+  }
+
